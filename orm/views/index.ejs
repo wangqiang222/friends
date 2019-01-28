@@ -1,0 +1,22 @@
+<script src="/javascripts/jquery-2.1.1.min.js"></script>
+<button class="aw">提交</button>
+<script>
+$('.aw').click(function(){
+	console.log(1)
+	$.ajax({
+		url:'/api/student/add',
+		type:'post',
+		data:{
+			name:'王强',
+			sex:'男',
+			brithday:'2018-06-04'
+		},
+		success(res){
+			console.log(res)
+		}
+		
+	})
+	
+})
+
+</script>
