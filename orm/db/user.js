@@ -33,6 +33,9 @@ const sequelize = require('sequelize');
 	},
 	status:{
 			type: sequelize.INTEGER,
-	}
+	},
+	account:{
+			type: sequelize.INTEGER,
+			},
 },{timestamps: false,freezeTableName:true});
 module.exports = User;

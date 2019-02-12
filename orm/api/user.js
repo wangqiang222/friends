@@ -1,7 +1,6 @@
 var router=require('express').Router();
 var user_server=require('./../server/user');
 router.post('/add',function(req,res,next){
-	console.log(req.body)
 	user_server.add(req,res)
 })
 router.get('/find',function(req,res,next){

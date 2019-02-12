@@ -39,9 +39,28 @@ module.exports={
 	}]}).then(news => res.send(JSON.stringify(news)));
 	},
 	add(req,res){
-		User.create(req.body).then(function(e){
- 			res.send(req.body)
-		})
+	School.findAll({where:{name:req.body['schoolId']}}).then(function(e){
+		if(e[0]){
+			var sid=e[0]["id"];
+			req.body['schoolId']=sid;
+			Major.findAll({where:{name:req.body['majorId']}}).then(function(me){
+				if(me[0]){
+				var mid=me[0]["id"];	
+				req.body['majorId']=mid;
+						User.create(req.body).then(function(e){
+						if(e){
+							res.send({'code':0,'msg':'增加成功','data':[]})
+						}
+						})
+				}else{
+				res.send('该专业暂无记录,请重新输入，或者申请增加专业')	
+				}
+			})
+			}else{
+			res.send('该学校暂无记录,请重新输入，或者申请增加学校')
+		}
+	})
+
 	},
 	update(req,res){
 		var gid=req.body['gid'];

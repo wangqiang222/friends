@@ -4,4 +4,7 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.sendFile(__dirname+'/admin.html');
 });
+router.get('/qq', function(req, res, next) {
+  res.sendFile(__dirname+'/c1.html');
+});
 module.exports = router;
